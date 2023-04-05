@@ -1,8 +1,10 @@
 export const Chart = () => {
   return (
-    <div className="flex flex-col items-center border border-green-500">
+    <div className="relative flex flex-col items-center">
       <TopSurface />
       <FrontSurface />
+      <FrontEdge />
+      <TopEdge />
     </div>
   );
 };
@@ -26,5 +28,24 @@ const FrontSurface = () => {
       <div className={`${sizeClassNames} skew-y-[30deg] ${gradientClassNames}`} />
       <div className={`${sizeClassNames} skew-y-[-30deg] ${gradientClassNames}`} />
     </div>
+  );
+}
+
+const FrontEdge = () => {
+  return (
+    <div className="w-px h-56 absolute top-[4.25rem] bg-gradient-to-b from-white/70 via-white/10 to-white/10" />
+  );
+}
+
+const TopEdge = () => {
+  const sizeClassNames = 'w-px h-16';
+  const transformClassNames = 'absolute origin-bottom top-[0.25rem]';
+  const gradientClassNames = 'bg-gradient-to-t from-white/70 via-white/10 to-white/0';
+
+  return (
+    <>
+      <div className={`${sizeClassNames} ${transformClassNames} ${gradientClassNames} rotate-[60deg]`} />
+      <div className={`${sizeClassNames} ${transformClassNames} ${gradientClassNames} rotate-[-60deg]`} />
+    </>
   );
 }
