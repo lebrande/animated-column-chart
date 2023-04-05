@@ -1,17 +1,30 @@
 import { motion } from "framer-motion"
 
 export const Chart = (props: {
-  value: number;
+  value1: number;
+  value2: number;
+  value3: number;
 }) => {
-  const { value } = props;
+  const {
+    value1,
+    value2,
+    value3,
+  } = props;
+
+  const valueTotal = value1 + value2 + value3
 
   return (
     <div className="relative flex flex-col items-center">
       <TopSurface />
-      <FrontSurface value={value} />
-      <FrontEdge value={value} />
+
+      <FrontSurface value={value1} />
+      <FrontSurface value={value2} />
+      <FrontSurface value={value3} />
+
+      <FrontEdge value={valueTotal} />
       <TopEdge />
-      <p className="text-white absolute">{value}</p>
+
+      <p className="text-white absolute">{valueTotal}</p>
     </div>
   );
 };
