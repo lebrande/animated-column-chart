@@ -1,6 +1,6 @@
 export const Grid = () => {
   return (
-    <div>
+    <div className="flex justify-center items-center">
       <Axis direction="x" />
       <Axis direction="y" />
     </div>
@@ -12,7 +12,7 @@ const Axis = (props: {
 }) => {
   const classNames = {
     x: 'skew-x-[-30deg] rotate-[30deg]',
-    y: 'skew-x-[30deg] rotate-[-30deg] -mt-96',
+    y: 'skew-x-[30deg] rotate-[-30deg] -ml-96',
   };
 
   return (
