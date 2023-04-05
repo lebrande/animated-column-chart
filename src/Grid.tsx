@@ -19,7 +19,7 @@ const Axis = (props: {
     <div className={`w-96 flex justify-between aspect-square ${classNames[props.direction]}`}>
       {Array(8).fill('').map((_, i) => {
         return (
-          <div key={i} className="w-[1px] h-full bg-white/50" />
+          <div key={i} className="w-px h-full bg-gradient-to-b from-white/10 via-white/50 to-white/10" />
         );
       })}
     </div>
