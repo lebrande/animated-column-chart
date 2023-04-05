@@ -1,3 +1,5 @@
+import { motion } from "framer-motion"
+
 export const Chart = (props: {
   value: number;
 }) => {
@@ -35,15 +37,27 @@ const FrontSurface = (props: {
 
   return (
     <div className="flex">
-      <div
-        style={{
+      <motion.div
+        initial={{
           height,
+        }}
+        animate={{
+          height,
+        }}
+        transition={{
+          duration: 0.5,
         }}
         className={`${sizeClassNames} skew-y-[30deg] ${gradientClassNames}`}
       />
-      <div
-        style={{
+      <motion.div
+        initial={{
           height,
+        }}
+        animate={{
+          height,
+        }}
+        transition={{
+          duration: 0.5,
         }}
         className={`${sizeClassNames} skew-y-[-30deg] ${gradientClassNames}`}
       />
@@ -58,9 +72,15 @@ const FrontEdge = (props: {
   const height = value * 64 / 100;
 
   return (
-    <div
-      style={{
+    <motion.div
+      initial={{
         height,
+      }}
+      animate={{
+        height,
+      }}
+      transition={{
+        duration: 0.5,
       }}
       className="w-px h-56 absolute top-[4.25rem] bg-gradient-to-b from-white/70 via-white/10 to-white/10"
     />
