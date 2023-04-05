@@ -1,5 +1,7 @@
 import { motion } from "framer-motion"
 
+type ChartColor = 'blue' | 'pink' | 'green';
+
 export const Chart = (props: {
   value1: number;
   value2: number;
@@ -17,9 +19,9 @@ export const Chart = (props: {
     <div className="relative flex flex-col items-center">
       <TopSurface />
 
-      <FrontSurface value={value1} />
-      <FrontSurface value={value2} />
-      <FrontSurface value={value3} />
+      <FrontSurface value={value1} color="blue" />
+      <FrontSurface value={value2} color="pink" />
+      <FrontSurface value={value3} color="green" />
 
       <FrontEdge value={valueTotal} />
       <TopEdge />
@@ -41,11 +43,16 @@ const TopSurface = () => {
 
 const FrontSurface = (props: {
   value: number;
+  color: ChartColor;
 }) => {
-  const { value } = props;
+  const { value, color } = props;
 
   const sizeClassNames = 'h-56 w-16';
-  const gradientClassNames = 'bg-gradient-to-b from-indigo-950 to-blue-800';
+  const gradientClassNames: Record<ChartColor, string> = {
+    blue: 'bg-gradient-to-b from-indigo-950 to-blue-800',
+    green: 'bg-gradient-to-b from-green-950 to-lime-800',
+    pink: 'bg-gradient-to-b from-purple-950 to-pink-800',
+  };
   const height = value * 64 / 100;
 
   return (
@@ -60,7 +67,7 @@ const FrontSurface = (props: {
         transition={{
           duration: 0.5,
         }}
-        className={`${sizeClassNames} skew-y-[30deg] ${gradientClassNames}`}
+        className={`${sizeClassNames} skew-y-[30deg] ${gradientClassNames[color]}`}
       />
       <motion.div
         initial={{
@@ -72,7 +79,7 @@ const FrontSurface = (props: {
         transition={{
           duration: 0.5,
         }}
-        className={`${sizeClassNames} skew-y-[-30deg] ${gradientClassNames}`}
+        className={`${sizeClassNames} skew-y-[-30deg] ${gradientClassNames[color]}`}
       />
     </div>
   );
